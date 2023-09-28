@@ -6,19 +6,21 @@ services:
     tty: true
     environment:
       - TZ=GMT
-    ports:
-      - 139:139
-      - 445:445
-    
+
+    volumes: 
+      - ./private:/private:z
+      - ./public:/public:z
+      - ./usr1:/usr1:z
+      - ./usr2:/usr2:z
+      - ./cfg/samba/smb.conf:/etc/samba/smb.conf:ro     
+
     command: 
       -u "admin;admin"
       -u "user1;xpto"
       -u "user2;xpto"
       -p
+   
+    ports:
+      - 139:139
+      - 445:445
 
-    volumes: 
-      - ./priv:/priv:z
-      - ./pub:/pub:z
-      - ./usr1:/usr1:z
-      - ./usr2:/usr2:z
-      - ./cfg/samba/smb.conf:/etc/samba/smb.conf:ro 

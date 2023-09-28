@@ -7,13 +7,13 @@ LOCAL=./backups
 name_backup="Backup_${DATE}.zip"
 
 PASTAS=(
-    ./priv
-    ./pub
+    ./private
+    ./public
     ./usr1
     ./usr2
 )
 
-verificar_sudo() {
+verificar() {
     if [ "$EUID" -ne 0 ]; then
         exit 1
     fi
